@@ -8,7 +8,9 @@
 
   require $file;
   } */
-
+/*var_dump($_SESSION);
+var_dump($_SESSION['agent']->getId_ag());
+exit();*/
 
 $conx = new Connexion();
 
@@ -23,15 +25,13 @@ $tableZ = array();
 $tableC = array();
 $tableP = array();
 
+
+
 //var_dump($tableD);
 
-$log = 'PDG_DKS';
-$mdp = "12345678";
-
-$id = '13';
 $manF = new Mgr_feuille();
 
-$res = $manF->recup_fr($id);
+$res = $manF->recup_fr($_SESSION['agent']->getId_ag());
 /*var_dump($res);
  exit();*/
 
@@ -49,7 +49,7 @@ if (is_object($res)) {
  // exit(); 
 
 
-$tableP = $manP->recup_prestC('5');
+$tableP = $manP->recup_prestC($_SESSION['agent']->getId_ag());
 
 $tabnv = $manD->list_nvdep();
 

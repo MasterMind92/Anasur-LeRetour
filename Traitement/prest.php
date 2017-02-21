@@ -13,23 +13,21 @@ if (isset($_GET['idcom'])) {
 
 	$libPrest = array();
 
-	$libPrest[]= $manP->recup_prestC($_GET['idcom']);
+	$libPrest= $manP->recup_prestC($_GET['idcom']);
 
 	/*var_dump($libPrest);
 	exit();*/
 
-	if (!empty($libPrest)) {
+	if (empty($libPrest)) {
 		
-		for($i=0; $i< count($libPrest[0]); $i++) {
-	 	
-		 	echo "<option value=".$libPrest[0][$i]->getId_prest()." >".$libPrest[$i]->getRs_prest()."</option>"; 	
-		}
+		echo "Aucune donnee retrouvee en rapport a cette commune";
 		
 	}else{
  	
+	 	for($i=0; $i< count($libPrest); $i++) {
 	 	
-
-		echo "Aucune donnee retrouvee en rapport a cette commune";
+		 	echo "<option value=".$libPrest[$i]->getId_prest()." >".$libPrest[$i]->getRs_prest()."</option>"; 	
+		}
 	
 		/*var_dump($libPrest[0]);
 		exit();*/
